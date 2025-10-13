@@ -8,7 +8,7 @@ try:
 except FileNotFoundError:
     mood_data = pd.DataFrame(columns=["Date", "Mood", "Note"])
 
-# Define some response templates
+# Defining response templates
 greetings = ["Hi there!", "Hello!", "Hey!", "Nice to see you!"]
 positive_responses = ["That's awesome!", "Keep it up!", "Glad to hear that!"]
 neutral_responses = ["Okay, I understand.", "Got it.", "Thanks for sharing."]
@@ -53,7 +53,8 @@ def chatbot_response(user_input):
 
 # Conversation loop
 print(random.choice(greetings))
-print("I'm your Mood Tracker Bot 🌤️ How are you feeling today? (Type 'bye' to exit)")
+print("I'm your Mood Tracker Bot 🌤️How are you feeling today? (Type 'bye' to exit)")
+
 
 while True:
     user_input = input("You: ")
