@@ -26,7 +26,7 @@ def mood_category(user_input):
     user_input = user_input.lower()
     if any(word in user_input for word in ["happy", "good", "great", "excited", "awesome", "joy"]):
         return "positive"
-    elif any(word in user_input for word in ["sad", "bad", "upset", "depressed", "angry", "tired", "cry"]):
+    elif any(word in user_input for word in ["sad", "bad", "upset", "depressed", "angry", "tired", "exhausted", "cry"]):
         return "negative"
     else:
         return "neutral"
