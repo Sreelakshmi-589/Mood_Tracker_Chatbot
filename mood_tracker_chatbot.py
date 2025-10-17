@@ -13,6 +13,23 @@ greetings = ["Hi there!", "Hello!", "Hey!", "Nice to see you!"]
 positive_responses = ["That's awesome!", "Keep it up!", "Glad to hear that!"]
 neutral_responses = ["Okay, I understand.", "Got it.", "Thanks for sharing."]
 negative_responses = ["I’m sorry to hear that.", "That sounds tough.", "I'm here for you."]
+negative_tips = [
+    "Try taking a short walk or doing some light exercise.",
+    "Reach out to a friend or family member.",
+    "Practice deep breathing for a few minutes.",
+    "Write down your thoughts in a journal.",
+    "Listen to your favorite music or watch a comforting show."
+]
+neutral_tips = [
+    "Remember, it's okay to have ups and downs.",
+    "Take a moment to reflect on something you enjoy.",
+    "Stay hydrated and take care of yourself."
+]
+positive_tips = [
+    "Keep spreading positivity!",
+    "Celebrate your good moments.",
+    "Share your happiness with someone else today!"
+]
 
 # Function to record mood
 def log_mood(mood, note=""):
@@ -39,17 +56,23 @@ def chatbot_response(user_input):
         else:
             last_entries = mood_data.tail(5)
             return f"Here are your last {len(last_entries)} mood entries:\n{last_entries.to_string(index=False)}"
-    
+
     mood_type = mood_category(user_input)
     if mood_type == "positive":
         response = random.choice(positive_responses)
+        tip = random.choice(positive_tips)
+        full_response = f"{response}\nSuggestion: {tip}"
     elif mood_type == "negative":
         response = random.choice(negative_responses)
+        tip = random.choice(negative_tips)
+        full_response = f"{response}\nSuggestion: {tip}"
     else:
         response = random.choice(neutral_responses)
-    
+        tip = random.choice(neutral_tips)
+        full_response = f"{response}\nSuggestion: {tip}"
+
     log_mood(mood_type, user_input)
-    return response
+    return full_response
 
 # Conversation loop
 print(random.choice(greetings))
